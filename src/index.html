@@ -7,26 +7,38 @@
     <title>Plan de incentivos Siemens</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 
 <body>
-    <form>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Acceso</h1>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+        <div class="row">
+            <div class="col">
+                <form>
+                    <div class="form-group">
+                        <label for="inputEmail">Email address</label>
+                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                            else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
+                    
+                    <div class="spinner-border text-info" role="status" id="loading-spinner">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
@@ -45,11 +57,10 @@
 
     <!-- Add Firebase products that you want to use -->
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
 
-    <script src="index.js"></script>
-    <script src="auth.js"></script>
+    <script src="js/init-firebase.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/index.js"></script>
 
 </body>
 
