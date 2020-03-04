@@ -1,10 +1,10 @@
-home_auth()
+home_auth();
 
 // Inicia SDKs de Firebase
 let db = firebase.firestore();
 let storage = firebase.storage();
 
-// Crea referencias para el storage
+// Crea referencias para el storage de comprobantes
 let storageRef = storage.ref();
 let comprobantesRef = storageRef.child('comprobantes');
 
@@ -23,12 +23,13 @@ let inputEmpresa = document.getElementById("inputEmpresa");
 let inputNombreVendedor = document.getElementById("inputNombreVendedor");
 let inputOrden = document.getElementById("inputOrden");
 let inputCantidad = document.getElementById("inputCantidad");
+let spinner = document.getElementById("loading-spinner");
 
 buttonEnviar.addEventListener("click", (event) => {
 
     let comprobanteImgRef = comprobantesRef.child(file.name);
-
-    let downloadURL;
+    spinner.style.display = "inline-block"
+    
     comprobanteImgRef.put(file).then((snapshot) => {
         snapshot.ref.getDownloadURL().then((downloadURL) => {
             console.log('File available at', downloadURL);
@@ -37,13 +38,22 @@ buttonEnviar.addEventListener("click", (event) => {
                 NombreVendedor: inputNombreVendedor.value,
                 Orden: inputOrden.value,
                 Cantidad: inputCantidad.value,
-                ComprobanteURL: downloadURL
+                ComprobanteURL: downloadURL,
+                Email: firebase.auth().currentUser.email,
+                Fecha: new Date().toLocaleDateString()
             })
                 .then(function (docRef) {
                     console.log("Document written with ID: ", docRef.id);
+                    inputOrden.value = null;
+                    inputCantidad.value = null;
+                    inputFileButton.value = null;
+                    spinner.style.display = "none";
+                    alert("Información guardada con éxito");
                 })
                 .catch(function (error) {
                     console.error("Error adding document: ", error);
+                    spinner.style.display = "none"
+                    alert("Error al guardar la información");
                 });
         });
     });

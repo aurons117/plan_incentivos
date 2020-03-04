@@ -77,6 +77,25 @@ function index_auth() {
     });
 }
 
+function crud_users_auth() {
+    // Observador para autenticación
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in.
+            console.log("Autenticado");
+
+            if (firebase.auth().currentUser.email != 'siemens_admin@siemens.com') {
+                window.location = 'home.html';
+            }
+            // ...
+        } else {
+            // User is signed out.
+            console.log("No autenticado");
+            window.location = 'index.html';
+        }
+    });
+}
+
 function home_auth() {
     // Observador para autenticación
     auth.onAuthStateChanged((user) => {
@@ -90,6 +109,17 @@ function home_auth() {
                     querySnapshot.forEach(function (doc) {
                         inputNombreVendedor.value = doc.data().name;
                         inputEmpresa.value = doc.data().empresa;
+                    });
+                })
+                .catch(function (error) {
+                    console.log("Error getting documents: ", error);
+                });
+                // Rutina para mostrar las posiciones enviadas actualmente INCOMPLETA
+                db.collection("registro").where("Email", "==", user.email)
+                .get()
+                .then(function (querySnapshot) {
+                    querySnapshot.forEach(function (doc) {
+                        console.log(doc.data());
                     });
                 })
                 .catch(function (error) {
