@@ -9,12 +9,3 @@ let firebaseConfig = {
 
 // Inicializa Firebase
 firebase.initializeApp(firebaseConfig);
-
-// Inicia SDKs de Firebase
-let db = firebase.firestore();
-let storage = firebase.storage();
-
-// Initialize the FirebaseUI Widget using Firebase.
-var ui = new firebaseui.auth.AuthUI(firebase.auth());
-
-
