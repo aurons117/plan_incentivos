@@ -43,9 +43,6 @@ function createUser(email, password, name, empresa, sucursal) {
                     let uid = user.uid;
                     addUserInfo(uid, empresa, sucursal, name, email)
                 });
-
-
-
         })
         .catch(function (error) {
             // Handle Errors here.
@@ -114,8 +111,8 @@ function home_auth() {
                 .catch(function (error) {
                     console.log("Error getting documents: ", error);
                 });
-                // Rutina para mostrar las posiciones enviadas actualmente INCOMPLETA
-                db.collection("registro").where("Email", "==", user.email)
+            // Rutina para mostrar las posiciones enviadas actualmente INCOMPLETA
+            db.collection("registro").where("Email", "==", user.email)
                 .get()
                 .then(function (querySnapshot) {
                     querySnapshot.forEach(function (doc) {
