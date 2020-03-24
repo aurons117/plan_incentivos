@@ -5,40 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plan de incentivos Siemens</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Acceso</h1>
+    <div class="background">
+        <img src="res/sie-logo-claim-es-petrol-rgb.png" alt="logo_siemens" class="logo">
+        <div class="login">
+            <div class="header">
+                <h1>Programa de recompensas 2020</h1>
+                <h2>Ingresa tus datos para continuar</h2>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <form>
-                    <div class="form-group">
-                        <label for="inputEmail">Email address</label>
-                        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" class="form-control" id="inputPassword">
-                    </div>
-                    <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
-                    
-                    <div class="spinner-border text-info" role="status" id="loading-spinner">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </form>
-            </div>
+
+            <form class="forma">
+                <div class="form-group">
+                    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                        placeholder="Usuario">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Contraseña">
+                </div>
+                <button type="button" class="boton" id="submitButton">Enviar</button>
+
+                <div class="spinner-border text-info" role="status" id="loading-spinner">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <small>Si deseas registrarte al programa o recuperar tu usuario y/o contraseña, envíanos un correo a:
+                    marketing-baja-tension.mx@siemens.com
+                </small>
+            </form>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+    <p class="siemens-footer">Siemens México S.A. de C.V.</p>
+>>>>>>> devAlex
 
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 

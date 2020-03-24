@@ -1,0 +1,165 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+body{
+    background-color: #3c464b;
+    color: #ffffff;
+}
+
+.background{
+    /* height: 100vh;
+    width: 100vw; */
+    background-image: url('../res/8142_Schutzkonzept_Visual_180911-1_HighRes_CMYK_original.png');
+    background-repeat: no-repeat; 
+    background-position: center center;
+    background-size: cover;
+    height:93vh;
+    width:100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    background-color: #ffffff;
+    width: 18%;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+
+.login{
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 3px 6px #000000;
+    border-radius: 42px;
+    opacity: 1;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    width: 30%;
+    height: auto;
+}
+
+.header{
+    background-color: #3BA9AE;
+    border-radius: 42px 42px 0px 0px ;
+    display: flex;
+    flex-flow: column;
+    height: 25%;
+    justify-content: center;
+}
+
+.header h1{
+    margin: 0;
+    /* padding-top: 20px; */
+    padding-left: 30px;
+    font-size: 1.3em;
+    margin-top: 2%;
+}
+
+.header h2{
+    margin: 0;
+    padding-left: 30px;
+    margin-bottom: 2%;
+}
+
+#loading-spinner {
+    display: none;
+}
+
+.boton{
+    background: #3AA9AE;
+    border-radius:28px;
+	border:1px solid #297478;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:1em;
+	padding:12px 37px;
+    text-shadow:0px 1px 0px #3AA9AE;
+    margin-top: 20px;
+}
+
+.forma{
+    display: flex;
+    flex-flow: column wrap;
+    /* justify-content: space-between; */
+    align-items: center;
+    height: 75%;
+}
+
+.form-group{
+    width: 70%;
+}
+
+input{
+    border-radius: 15px;
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    font-size: 1em;
+    box-sizing: border-box;
+    padding-left: 5%;
+}
+
+/* ::-webkit-input-placeholder{
+    padding-left: 20px;
+} */
+
+small{
+    font-size: 0.7em;
+    text-align: center;
+    margin-bottom:3%;
+    margin-top: 5%;
+    width: 80%
+}
+
+.siemens-footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.9em;
+    margin-right: 5%;
+}
+
+@media screen and (max-width: 720px){
+
+    .logo{
+        width: 40%;
+    }
+
+    .login{
+        width: 90%;
+        height: auto;
+    }
+
+    .header h1{
+        font-size: 1.5em;
+    }
+
+    .header h2{
+        font-size: 1em;
+    }
+
+    .form-group{
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 992px) and (min-width: 720px){
+
+    .logo{
+        width: 25%;
+    }
+
+    .login{
+        width: 60%;
+        height: auto;
+    }
+
+}
