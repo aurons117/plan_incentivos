@@ -7,7 +7,16 @@ let inputPassword = document.getElementById("inputPassword");
 let spinner = document.getElementById("loading-spinner");
 
 botonEnviar.addEventListener("click", (e) => {
+    signIndex();
+});
 
+inputPassword.addEventListener("keydown", (e) => {
+    if (e.key === 'Enter') {
+        signIndex();
+    }
+});
+
+function signIndex() {
     let email = inputEmail.value;
     let password = inputPassword.value;
 
@@ -15,5 +24,4 @@ botonEnviar.addEventListener("click", (e) => {
 
     inputEmail.value = null;
     inputPassword.value = null;
-});
-
+}
