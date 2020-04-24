@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de incentivos Siemens</title>
+    <link rel="stylesheet" href="css/users.css">
+</head>
+
+<body>
+
+    <div class="headerContainer">
+        <img src="res/blank-profile-picture-973460_640.png" alt="Foto de perfil" class="fotoPerfil">
+        <div class="line"></div>
+        <div class="datosUsuario">
+            <p>Buen día! <span id='inputNombreVendedor'></span></p>
+            <p>Correo: <span id="inputCorreo"></span></p>
+        </div>
+        <p id="inputEmpresa"></p>
+        <div class="puntajeContainer">
+            <p>Total vendido</p>
+            <p class="puntaje">$<span id="puntajeMaximo"></span></p>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <form class="forma">
+            <h1>Ingresa los datos</h1>
+            <input type="text" id="inputOrden" aria-describedby="emailHelp">
+            <p>Número de orden</p>
+            <input type="number" id="inputCantidad">
+            <p>Monto</p>
+            <input type="file" id="inputFile" name="inputFile" accept="image/jpeg">
+
+            <button type="button" id="buttonEnviar">Subir comprobante</button>
+            <div class="spinner-border text-info" role="status" id="loading-spinner">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </form>
+
+        <img src="res/comprobante.png" alt="Img de comprobante random" class="imgComprobante">
+        
+        <div id="historial"></div>
+    </div>
+
+
+    <footer>
+        <div class="salir">
+            <button type="button" id="botonSalir">
+                Salir
+            </button>
+        </div>
+        <img src="res/5cm.png" alt="">
+    </footer>
+
+
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
+
+    <script src="/js/init-firebase.js"></script>
+    <script src="/js/users.js"></script>
+
+</body>
+
+</html>

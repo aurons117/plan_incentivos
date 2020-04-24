@@ -1,0 +1,236 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+    font-weight: normal;
+}
+
+body {
+    margin: 0;
+    size: 100vh;
+}
+
+.headerContainer {
+    background-color: #C8D7DF;
+    height: 20vh;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.headerContainer > * {
+    font-size: 1.25em;
+}
+
+.fotoPerfil {
+    border-radius: 100%;
+    height: 75%;
+    border: 1px #707070 solid;
+}
+
+.line {
+    height: 50%;
+    border: 1px #707070 solid;
+}
+
+.puntajeContainer {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    margin: 0;
+}
+
+.puntajeContainer p {
+    margin: 0;
+}
+
+.puntaje {
+    background: #F49234;
+    border-radius:28px;
+    color:#ffffff;
+    padding:12px 37px;
+    font-size: 0.9em;
+}
+
+#loading-spinner {
+    display: none;
+}
+
+/* Formulario */
+
+.content{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70vh;
+    font-size: 1.25em;
+    color: #434343;
+}
+
+.forma {
+    display: flex;
+    flex-flow: column wrap;
+    height: 80%;
+    width: 18%;
+    justify-content: space-between;
+    font-size: 1.2em;
+}
+
+.forma p {
+    margin: 0px;
+    width: 100%;
+}
+
+input {
+    height: 13%;
+    width: 100%;
+    border-radius: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 1px solid #707070;
+}
+
+#inputFile {
+    border-radius: 0px;
+    border: hidden;
+    cursor: pointer;
+    height: auto;
+    font-size: 0.5em;
+}
+
+.forma button {
+    background: #3AA9AE;
+    border-radius:28px;
+	border:1px solid #297478;
+	cursor:pointer;
+    color:#ffffff;
+    padding:12px 37px;
+    font-size: 0.9em;
+    width: auto;
+    height: auto;
+}
+
+/* IMAGEN */
+
+.imgComprobante {
+    height: 70%;
+}
+
+#historial {
+    background-color: #F8F8F8;
+    border: solid 1px #707070;
+    border-radius: 10px;
+    height: 70%;
+    width: 20%;
+    padding: 1.5em;
+    overflow-y: auto;
+}
+
+.comprobante {
+    background-color: #E2E2E2;
+    border-radius: 20px;
+    padding: 3%;
+    margin-top: 10px;
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+}
+
+#botonSalir {
+    font-size: 3em;
+    margin-left: 1.5em;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    color: #3AA9AE;
+    font-weight: bold;
+}
+
+footer img {
+    margin-right: 2em;
+    height: 2em;
+}
+
+h1 {
+    font-weight: bold;
+    margin: 0;
+}
+
+span {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 992px){
+    .headerContainer {
+        height: auto;
+        padding-bottom: 1vh;
+        padding-top: 1vh;
+        position: sticky;
+        top: 0;
+        width: 100%;
+    }
+
+    .content {
+        padding-top: 5vh;
+        flex-flow: column;
+        height: auto;
+        /* padding-top: 30vh; */
+    }
+
+    footer {
+        height: auto;
+        flex-flow: column;
+        justify-content: space-around;
+    }
+
+    .fotoPerfil {
+        height: 10vh;
+    }
+
+    .datosUsuario, .headerContainer > p {
+        display: none;
+    }
+
+    .forma {
+        width: 60%;
+        margin-left: 0px;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5vh;
+    }
+
+    .imgComprobante {
+        display: none;
+    }
+
+    input {
+        height: 8vh;
+    }
+
+    .forma p {
+        margin-bottom: 3vh;
+        margin-top: 2vh;
+    }
+
+    .forma button {
+        margin-top: 5vh;
+    }
+
+    #historial {
+        width: 80%;
+        margin-bottom: 5vh;
+    }
+
+    #botonSalir, footer img {
+        margin: 0;
+        padding-bottom: 3vh;
+    }
+}

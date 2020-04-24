@@ -1,5 +1,4 @@
-// Configuración de los SDK para firebase
-let firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyD9HOzLDSqvHidKp_sF4_MXzU0BaOJEqCg",
   projectId: "pruebafirebase-e4b09",
   authDomain: "pruebafirebase-e4b09.firebaseapp.com",
@@ -9,3 +8,6 @@ let firebaseConfig = {
 
 // Inicializa Firebase
 firebase.initializeApp(firebaseConfig);
+
+// Carga el perfil actual
+const auth = firebase.auth();

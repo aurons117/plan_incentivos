@@ -5,14 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/admin.css">
 
 </head>
 
 <body>
+    <header>
+        <div class="headerContainer">
+            <img src="" alt="Logo siemens blanco">
+            <h1>Sesión de administrador</h1>
+        </div>
+    </header>
 
-    <div class="container">
+    <section>
+        <h1>Historial y reportes</h1>
+        <div class="content">
+            <div class="usersContainer">
+                <h2>Usuarios</h2>
+                <div class="user">
+                    <div class="datos1">
+                        <p>Ivan Alexis Carbajal Sandin</p>
+                        <p>alexis.sandin@siemens.com</p>
+                        <p>Siemens Mexico</p>
+                    </div>
+                    <p>$35000.55</p>
+                </div>
+                <div class="user">
+                    <div class="datos1">
+                        <p>Ivan Alexis Carbajal Sandin</p>
+                        <p>alexis.sandin@siemens.com</p>
+                        <p>Siemens Mexico</p>
+                    </div>
+                    <p>$35000.55</p>
+                </div>
+                <div class="user">
+                    <div class="datos1">
+                        <p>Ivan Alexis Carbajal Sandin</p>
+                        <p>alexis.sandin@siemens.com</p>
+                        <p>Siemens Mexico</p>
+                    </div>
+                    <p>$35000.55</p>
+                </div>
+                <div class="user">
+                    <div class="datos1">
+                        <p>Ivan Alexis Carbajal Sandin</p>
+                        <p>alexis.sandin@siemens.com</p>
+                        <p>Siemens Mexico</p>
+                    </div>
+                    <p>$35000.55</p>
+                </div>
+            </div>
+            <div class="registersContainer">
+                <h2>Registros</h2>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+
+    <!-- <div class="container">
         <div class="row">
             <div class="col">
                 <button type="button" id="botonSalir">Salir</button>
@@ -32,9 +85,8 @@
                         <div class="col-sm-10">
                             <select class="form-control" id="inputEmpresa">
                                 <option>...</option>
+                                <option>Surtidor eléctrico</option>
                                 <option>Rodisa</option>
-                                <option>Abastecedores</option>
-                                <option>Gastelum</option>
                             </select>
                         </div>
                     </div>
@@ -81,21 +133,7 @@
                 </form>
             </div>
         </div>
-    </div>
-    <form>
-
-
-    </form>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+    </div> -->
 
     <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
@@ -108,9 +146,7 @@
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
 
     <script src="js/init-firebase.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/database_outils.js"></script>
-    <script src="js/crud_users.js"></script>
+    <script src="js/admin.js"></script>
 
 </body>
 
