@@ -16,7 +16,7 @@ h1, h2 {
 
 .headerContainer {
     background-color: #3CA9AE;
-    height: 10vh;
+    height: auto;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -24,6 +24,8 @@ h1, h2 {
     color: #FFFFFF;
     font-size: 1.5em;
     font-weight: bold;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 .headerContainer > * {
@@ -34,7 +36,7 @@ h1, h2 {
 section {
     display: flex;
     flex-flow: column;
-    height: 75vh;
+    height: 80vh;
 }
 
 section h1 {
@@ -55,7 +57,7 @@ section h1 {
 .usersContainer, .registersContainer {
     background-color: #F8F8F8;
     height: 80%;
-    width: 35%;
+    width: 40%;
     overflow-y: auto;
     border-radius: 10px;
 }
@@ -65,7 +67,19 @@ section h1 {
     border-radius: 10px;
     display: flex;
     flex-flow: row wrap;
-    height: 25%;
+    height: auto;
+    margin: 1em;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2em;
+}
+
+.register {
+    background-color: #E2E2E2;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    height: auto;
     margin: 1em;
     align-items: center;
     justify-content: space-around;
@@ -80,6 +94,57 @@ section h1 {
     font-weight: bold;
 }
 
+.save {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
 footer {
-    height: 15vh;
+    height: auto;
+}
+
+button {
+    background: #3AA9AE;
+    border-radius:28px;
+	border:1px solid #297478;
+	cursor:pointer;
+    color:#ffffff;
+    padding:12px 37px;
+    font-size: 0.9em;
+    width: auto;
+    height: auto;
+}
+
+button:hover {
+    background: #328A8E;
+}
+
+footer {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+}
+
+#botonSalir {
+    font-size: 3em;
+    margin-left: 1.5em;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    color: #3AA9AE;
+    font-weight: bold;
+}
+
+#botonSalir:hover {
+    color: #328A8E;
+}
+
+footer img {
+    margin-right: 2em;
+    height: 2em;
 }

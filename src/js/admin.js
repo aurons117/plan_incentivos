@@ -1,92 +1,28 @@
-const inputEmpresa = document.getElementById('inputEmpresa');
-const inputSucursal = document.getElementById('inputSucursal');
-const inputNombre = document.getElementById('inputNombre');
-const inputEmail = document.getElementById('inputEmail');
-const inputPassword = document.getElementById('inputPassword');
-const buttonEnviar = document.getElementById('buttonEnviar');
 const buttonReporte = document.getElementById('buttonReport');
-const botonSalir = document.getElementById("botonSalir");
+const botonSalir = document.getElementById('botonSalir');
+const buttonSave = document.getElementById('saveChanges');
+const usersContainer = document.getElementById('usersContainer');
+const registersContainer = document.getElementById('registersContainer');
 
 // Inicia SDKs de Firebase
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-let logged = false;
-auth.onAuthStateChanged((user) => {
-    if (user) {
-        // User is signed in.
-        if (firebase.auth().currentUser.email === 'siemens_admin@siemens.com') {
-            logged = true;
-        } else if (logged === true) {
-            console.log("Usuario creado");
-        } else {
-            window.location = 'users.html';
-        }
-        // ...
-    } else {
-        // User is signed out.
-        console.log("No autenticado");
-        window.location = 'index.html';
-    }
-});
-
-buttonEnviar.addEventListener("click", (e) => {
-    let email = inputEmail.value;
-    let password = inputPassword.value;
-    let name = inputNombre.value;
-    let empresa = inputEmpresa.value;
-    let sucursal = inputSucursal.value;
-
-    // Se crea usuario y contraseña
-    auth.createUserWithEmailAndPassword(email, password)
-        .then(info => {
-            let user = firebase.auth().currentUser;
-
-            user.updateProfile({        // Actualiza el nombre
-                displayName: name
-            })
-                .then(function () {
-                    // Update successful.
-                    let uid = user.uid;
-
-                    let db = firebase.firestore();  // Se repite
-
-                    db.collection("users").add({
-                        uid: uid,
-                        sucursal: sucursal,
-                        empresa: empresa,
-                        name: name,
-                        email: email
-                    })
-                        .then(function (docRef) {
-                            console.log("Document written with ID: ", docRef.id);
-                        })
-                        .catch(function (error) {
-                            console.error("Error adding document: ", error);
-                        });
-
-                });
-        })
-        .catch(function (error) {
-            // Handle Errors here.
-            let errorCode = error.code;
-            let errorMessage = error.message;
-            // ...
-        });
-
-});
+init();
 
 botonSalir.addEventListener("click", (e) => {
+    console.log('salir');
+
     auth.signOut().then(function () {
         // Sign-out successful.
     }).catch(function (error) {
-        // An error happened.
+        console.log('Error');
+
     });
 });
 
 buttonReporte.addEventListener("click", (e) => {
-    db.collection("registro")
-        .get()
+    db.collection("registro").get()
         .then(function (querySnapshot) {
 
             let csvContent = 'data:text/csv;charset=utf-8,';
@@ -117,3 +53,96 @@ buttonReporte.addEventListener("click", (e) => {
             console.log("Error getting documents: ", error);
         });
 });
+
+buttonSave.addEventListener('click', (e) => {
+    let selects = document.getElementsByTagName("SELECT");
+    Array.from(selects).forEach(async (select) => {
+        let docRef = db.collection("registro").doc(select.id);
+        try {
+            await docRef.update({ Status: select.value });
+        } catch (error) {
+            alert(error);
+        }
+        location.reload();
+    });
+});
+
+async function init() {
+    // Validación de autenticación como administrador
+    let logged = false;
+
+    await auth.onAuthStateChanged((user) => {
+        if (user) {
+            // User is signed in.
+            if (firebase.auth().currentUser.email === 'siemens_admin@siemens.com') {
+                logged = true;
+            } else if (logged === true) {
+                console.log("Usuario creado");
+            } else {
+                window.location = 'users.html';
+            }
+            // ...
+        } else {
+            // User is signed out.
+            console.log("No autenticado");
+            window.location = 'index.html';
+        }
+    });
+
+    let usersText = usersContainer.innerHTML;
+    let querySnapshot = await db.collection("users").get();
+    querySnapshot.forEach((doc) => {
+        usersText +=
+            `<div class="user">
+            <div class="datos1">
+                <p>${doc.data().name}</p>
+                <p>${doc.data().email}</p>
+                <p>${doc.data().empresa}</p>
+            </div>
+        </div>`;
+    });
+    usersContainer.innerHTML = usersText;
+
+    let usersRegistered = document.getElementsByClassName('user');
+    Array.from(usersRegistered).forEach((user) => {
+        user.addEventListener('click', async (e) => {
+            let name = user.firstElementChild.firstElementChild.innerText;
+            let querySnapshot;
+            try {
+                querySnapshot = await db.collection("registro").where("NombreVendedor", "==", name).get();
+            } catch (error) {
+                console.log("Error getting documents: ", error);
+            }
+
+            let registersText = `<h2>Registros</h2>`;
+            let contador = 0;
+            querySnapshot.forEach((doc) => {
+                if (doc.data().Status === 'Pendiente') {
+                    registersText +=
+                        `<div class="register">
+                        <div class="datos1">
+                            <p>Orden ${doc.data().Orden}</p>
+                            <p>Fecha ${doc.data().Fecha}</p>
+                            <p>Cantidad $${doc.data().Cantidad}</p>
+                        </div>
+                        <div class="datos2">
+                            <a href="${doc.data().ComprobanteURL}">
+                                <p>Comprobante</p>
+                            </a>
+                            <select name="approbation" id="${doc.id}">
+                                <option value="Pendiente">Pendiente</option>
+                                <option value="Aprobado">Aprobado</option>
+                                <option value="Rechazado">Rechazado</option>
+                            </select>
+                        </div>
+                    </div>`;
+                    contador++;
+                }
+            });
+            if (contador === 0) {
+                registersText += `<p>No hay registros pendientes</p>`;
+            }
+            registersContainer.innerHTML = registersText;
+        });
+    });
+}
