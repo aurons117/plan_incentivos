@@ -68,35 +68,56 @@ body {
     color: #434343;
 }
 
-.forma {
-    display: flex;
-    flex-flow: column wrap;
-    height: 80%;
-    width: 18%;
-    justify-content: space-between;
+.info {
+    width: 40%;
+    height: 100%;
+    /* padding: 1.5em; */
+}
+
+.info h1 {
+    margin-bottom: 1em;
+    margin-left: 2em;
     font-size: 1.2em;
+    padding-top: 1em;
+}
+
+.forma {
+    background-color: #F8F8F8;
+    border: solid 1px #707070;
+    border-radius: 10px;
+    padding: 0em 1.5em 1.5em 1.5em;
+    overflow-y: auto;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
 }
 
 .forma p {
-    margin: 0px;
+    width: 100%;
+}
+
+.forma h2 {
+    font-weight: bold;
     width: 100%;
 }
 
 input {
-    height: 13%;
-    width: 100%;
+    height: 1.5em;
+    width: -webkit-fill-available;
     border-radius: 15px;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
     border: 1px solid #707070;
+    margin: 10px 0px 10px 0px;
 }
 
 #inputFile {
     border-radius: 0px;
     border: hidden;
     cursor: pointer;
-    height: auto;
-    font-size: 0.5em;
+    font-size: 1em;
 }
 
 .forma button {
@@ -107,24 +128,31 @@ input {
     color:#ffffff;
     padding:12px 37px;
     font-size: 0.9em;
-    width: auto;
+    width: 30%;
     height: auto;
-}
-
-/* IMAGEN */
-
-.imgComprobante {
-    height: 70%;
+    margin-top: 1em;
 }
 
 #historial {
     background-color: #F8F8F8;
     border: solid 1px #707070;
     border-radius: 10px;
-    height: 70%;
-    width: 20%;
+    height: 75%;
+    width: 30%;
     padding: 1.5em;
     overflow-y: auto;
+}
+
+.botones {
+    padding-top: 1em;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#buttonEtapa4Lost {
+    background-color: #F49234;
 }
 
 .comprobante {
@@ -132,6 +160,15 @@ input {
     border-radius: 20px;
     padding: 3%;
     margin-top: 10px;
+}
+
+.comprobante:hover {
+    cursor: pointer;
+    background-color: #d2d0d0;
+}
+
+.comprobante p {
+    margin: 0.5em 0 0.5em 0;
 }
 
 /* Footer */
@@ -154,6 +191,10 @@ footer {
     font-weight: bold;
 }
 
+#botonSalir:hover {
+    color: #328A8E;
+}
+
 footer img {
     margin-right: 2em;
     height: 2em;
@@ -166,6 +207,10 @@ h1 {
 
 span {
     font-weight: bold;
+}
+
+.d-none {
+    display: none;
 }
 
 @media screen and (max-width: 992px){

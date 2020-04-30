@@ -55,13 +55,89 @@ buttonReporte.addEventListener("click", (e) => {
 });
 
 buttonSave.addEventListener('click', (e) => {
-    let selects = document.getElementsByTagName("SELECT");
-    Array.from(selects).forEach(async (select) => {
-        let docRef = db.collection("registro").doc(select.id);
-        try {
-            await docRef.update({ Status: select.value });
-        } catch (error) {
-            alert(error);
+    let registers = document.getElementsByClassName('register');
+    Array.from(registers).forEach(async (register) => {
+        let nivel = document.getElementById(`nivel_${register.id}`).innerHTML;
+        let etapa = document.getElementById(`etapa_${register.id}`).innerHTML;
+        let selector = document.getElementById(`selector_${register.id}`).value;
+        let success = document.getElementById(`success_${register.id}`).innerHTML;
+        let docRef = db.collection("registro").doc(register.id);
+
+        if (selector === 'Rechazado') {
+            try {
+                await docRef.update({
+                    Status: 'Rechazado'
+                });
+                alert('Cambios guardados');
+            } catch (error) {
+                alert(error);
+            }
+        }
+
+        else if (selector === 'Aprobado') {
+            switch (etapa) {
+                case '1':
+                    try {
+                        await docRef.update({
+                            Status: 'Pendiente',
+                            Puntaje: '50',
+                            Etapa: '2'
+                        });
+                        alert('Cambios guardados');
+                    } catch (error) {
+                        alert(error);
+                    }
+                    break;
+                case '2':
+                    try {
+                        await docRef.update({
+                            Status: 'Pendiente',
+                            Puntaje: '100',
+                            Etapa: '3'
+                        });
+                        alert('Cambios guardados');
+                    } catch (error) {
+                        alert(error);
+                    }
+                    break;
+                case '3':
+                    try {
+                        await docRef.update({
+                            Status: 'Pendiente',
+                            Puntaje: '150',
+                            Etapa: '4'
+                        });
+                        alert('Cambios guardados');
+                    } catch (error) {
+                        alert(error);
+                    }
+                    break;
+                case '4':
+                    let puntaje = '150';
+                    if (success === 'Ganado') {
+                        if (nivel === '2') {
+                            puntaje = '250';
+                        } else if (nivel == '3') {
+                            puntaje = '300'
+                        } else if (nivel == '4') {
+                            puntaje = '350'
+                        }
+                    }
+                    try {
+                        await docRef.update({
+                            Status: 'Finalizado',
+                            Etapa: '4',
+                            Puntaje: puntaje
+                        });
+                        alert('Cambios guardados');
+                    } catch (error) {
+                        alert(error);
+                    }
+                    break;
+                default:
+                    console.log('Error en la etapa');
+                    break;
+            }
         }
         location.reload();
     });
@@ -117,25 +193,33 @@ async function init() {
             let registersText = `<h2>Registros</h2>`;
             let contador = 0;
             querySnapshot.forEach((doc) => {
-                if (doc.data().Status === 'Pendiente') {
+                if (doc.data().Status === 'En revisión') {
                     registersText +=
-                        `<div class="register">
-                        <div class="datos1">
-                            <p>Orden ${doc.data().Orden}</p>
-                            <p>Fecha ${doc.data().Fecha}</p>
-                            <p>Cantidad $${doc.data().Cantidad}</p>
-                        </div>
-                        <div class="datos2">
-                            <a href="${doc.data().ComprobanteURL}">
-                                <p>Comprobante</p>
-                            </a>
-                            <select name="approbation" id="${doc.id}">
-                                <option value="Pendiente">Pendiente</option>
-                                <option value="Aprobado">Aprobado</option>
-                                <option value="Rechazado">Rechazado</option>
-                            </select>
-                        </div>
-                    </div>`;
+                        `<div class="register" id="${doc.id}">
+                            <div class="datos1">
+                                <p>Proyecto ${doc.data().Proyecto}</p>
+                                <p>Nivel: <span id="nivel_${doc.id}">${doc.data().Nivel}</span></p>
+                                <p>Cantidad: $${doc.data().Cantidad}</p>
+                                <p>Status: <span id="status_${doc.id}">${doc.data().Status}</span></p>
+                                <p>Etapa: <span id="etapa_${doc.id}">${doc.data().Etapa}</span></p>
+                                <p>Puntaje obtenido: <span id="puntaje_${doc.id}">${doc.data().Puntaje}</span></p>
+                            </div>
+                            <div class="datos2">
+                                <a href="${doc.data().ComprobanteEtapa2}" target="_blank">
+                                    <p>Comprobante Etapa 2</p>
+                                </a>
+                                <p>Fecha Etapa 3: ${doc.data().FechaEtapa3}</p>
+                                <a href="${doc.data().ComprobanteEtapa4}" target="_blank">
+                                    <p>Comprobante Etapa 4</p>
+                                </a>
+                                <p>Resultado: <span id="success_${doc.id}">${doc.data().Success}</span></p>
+                                <select name="approbation" id="selector_${doc.id}">
+                                    <option value="En Revisión">En Revisión</option>
+                                    <option value="Aprobado">Aprobado</option>
+                                    <option value="Rechazado">Rechazado</option>
+                                </select>
+                            </div>
+                        </div>`;
                     contador++;
                 }
             });

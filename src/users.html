@@ -14,36 +14,74 @@
         <img src="res/blank-profile-picture-973460_640.png" alt="Foto de perfil" class="fotoPerfil">
         <div class="line"></div>
         <div class="datosUsuario">
-            <p>Buen día! <span id='inputNombreVendedor'></span></p>
+            <p>¡Buen día! <span id='inputNombreVendedor'></span></p>
             <p>Correo: <span id="inputCorreo"></span></p>
         </div>
         <p id="inputEmpresa"></p>
         <div class="puntajeContainer">
-            <p>Total vendido</p>
-            <p class="puntaje">$<span id="puntajeMaximo"></span></p>
+            <p>Puntos totales</p>
+            <p class="puntaje"><span id="puntajeMaximo"></span> puntos</span></p>
         </div>
     </div>
 
 
-    <div class="content">
-        <form class="forma">
-            <h1>Ingresa los datos</h1>
-            <input type="text" id="inputOrden" aria-describedby="emailHelp">
-            <p>Número de orden</p>
-            <input type="number" id="inputCantidad">
-            <p>Monto</p>
-            <input type="file" id="inputFile" name="inputFile" accept="image/jpeg">
+    <section class="content">
+        <div class="info">
+            <h1>Información</h1>
+            <form class="forma" id="etapa1">
+                <h2>Etapa 1</h2>
+                <p>Registra tus proyectos.</p>
+                <input type="text" id="inputCliente" placeholder="Cliente">
+                <input type="text" id="inputProyecto" placeholder="Referencia de proyecto">
+                <input type="text" id="inputUbicacion" placeholder="Ubicación del proyecto">
+                <input type="number" id="inputCantidad" placeholder="Monto del proyecto">
+                <button type="button" id="buttonEtapa1">Registrar proyecto</button>
+                <div class="spinner-border text-info" role="status" id="loading-spinner">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </form>
 
-            <button type="button" id="buttonEnviar">Subir comprobante</button>
-            <div class="spinner-border text-info" role="status" id="loading-spinner">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </form>
+            <form class="forma d-none" id="etapa2">
+                <h2>Etapa 2</h2>
+                <p>Proporciona planos o diagramas unifilares del proyecto.</p>
+                <input type="file" id="inputFileEtapa2" name="inputFileEtapa2" accept="image/jpeg">
+                <button type="button" id="buttonEtapa2">Subir archivo</button>
+                <div class="spinner-border text-info" role="status" id="loading-spinner">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </form>
 
-        <img src="res/comprobante.png" alt="Img de comprobante random" class="imgComprobante">
-        
-        <div id="historial"></div>
-    </div>
+            <form class="forma d-none" id="etapa3">
+                <h2>Etapa 3</h2>
+                <p>Entregar oferta al cliente, analizar y aclarar dudas técnicas respecto al funcionamiento de
+                    los productos y soluciones ofrecidas.</p>
+                <p>Fecha de reunión</p>
+                <input type="date" name="fechaReunion" id="fechaReunion">
+                <button type="button" id="buttonEtapa3">Confirmar</button>
+                <div class="spinner-border text-info" role="status" id="loading-spinner">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </form>
+
+            <form class="forma d-none" id="etapa4">
+                <h2>Etapa 4</h2>
+                <p>Se ha concluye el proyecto. Se confirma si se perdió o se ganó con su respectivo comprobante.</p>
+                <input type="file" id="inputFileEtapa4" name="inputFileEtapa4" accept="image/jpeg">
+                <div class="botones">
+                    <button type="button" id="buttonEtapa4Lost">Proyecto perdido</button>
+                    <button type="button" id="buttonEtapa4Win">Proyecto ganado</button>
+                </div>
+                <div class="spinner-border text-info" role="status" id="loading-spinner">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </form>
+
+        </div>
+
+        <div id="historial">
+            <h1>Historial</h1>
+        </div>
+    </section>
 
 
     <footer>
